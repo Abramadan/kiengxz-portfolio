@@ -52,7 +52,7 @@ const SERVICES = [
   { icon: '⬛', title: 'Banner Design',     desc: 'Social media, pull-up, and billboard banners that make your message heard.'             },
 ]
 
-const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY' // Replace with key from web3forms.com
+const WEB3FORMS_KEY = 'dd4b0f38-c23d-44a6-8778-066cceb41336'
 
 export default function App() {
   const [activeFilter, setActiveFilter] = useState('all')
