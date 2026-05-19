@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import logoImg from './assets/logo.jpg'
 import './index.css'
 
 const PORTFOLIO_ITEMS = [
@@ -55,7 +56,7 @@ export default function App() {
       {/* NAVBAR */}
       <nav className="navbar">
         <div className="nav-logo" onClick={() => scrollTo('home')} role="button" tabIndex={0}>
-          <span className="logo-k">K</span>
+          <img src={logoImg} alt="KIENGXZ GRAPHICS logo" className="nav-logo-img" />
           <span className="logo-text">KIENGXZ <em>GRAPHICS</em></span>
         </div>
         <button className="hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">

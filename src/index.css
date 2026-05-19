@@ -124,6 +124,13 @@ body {
   cursor: pointer;
 }
 
+.nav-logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
