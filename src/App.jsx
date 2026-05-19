@@ -52,9 +52,37 @@ const SERVICES = [
   { icon: '⬛', title: 'Banner Design',     desc: 'Social media, pull-up, and billboard banners that make your message heard.'             },
 ]
 
+const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY' // Replace with key from web3forms.com
+
 export default function App() {
   const [activeFilter, setActiveFilter] = useState('all')
   const [menuOpen, setMenuOpen]         = useState(false)
+
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
+  const [formStatus, setFormStatus] = useState('idle') // idle | sending | success | error
+
+  const handleChange = e => setFormData(f => ({ ...f, [e.target.name]: e.target.value }))
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setFormStatus('sending')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ access_key: WEB3FORMS_KEY, ...formData }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setFormStatus('success')
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setFormStatus('error')
+      }
+    } catch {
+      setFormStatus('error')
+    }
+  }
 
   const filtered = activeFilter === 'all'
     ? PORTFOLIO_ITEMS
@@ -217,15 +245,36 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <form
-              className="contact-form"
-              onSubmit={e => { e.preventDefault(); alert("Message sent! We'll be in touch soon.") }}
-            >
-              <input  type="text"  placeholder="Your Name"                   required />
-              <input  type="email" placeholder="Your Email"                  required />
-              <input  type="text"  placeholder="Subject"                     required />
-              <textarea            placeholder="Tell us about your project…" rows={5} required />
-              <button type="submit" className="btn-primary">Send Message</button>
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <input
+                type="text" name="name" placeholder="Your Name"
+                value={formData.name} onChange={handleChange} required
+              />
+              <input
+                type="email" name="email" placeholder="Your Email"
+                value={formData.email} onChange={handleChange} required
+              />
+              <input
+                type="text" name="subject" placeholder="Subject"
+                value={formData.subject} onChange={handleChange} required
+              />
+              <textarea
+                name="message" placeholder="Tell us about your project…" rows={5}
+                value={formData.message} onChange={handleChange} required
+              />
+              {formStatus === 'success' && (
+                <div className="form-feedback success">
+                  ✅ Message sent! We'll get back to you soon.
+                </div>
+              )}
+              {formStatus === 'error' && (
+                <div className="form-feedback error">
+                  ❌ Something went wrong. Please try again or email us directly.
+                </div>
+              )}
+              <button type="submit" className="btn-primary" disabled={formStatus === 'sending'}>
+                {formStatus === 'sending' ? 'Sending…' : 'Send Message'}
+              </button>
             </form>
           </div>
         </div>
