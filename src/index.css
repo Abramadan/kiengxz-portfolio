@@ -412,6 +412,8 @@ body {
 }
 
 .portfolio-cat {
+  position: relative;
+  z-index: 2;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(6px);
   color: var(--gold);
