@@ -1,25 +1,36 @@
 import { useState } from 'react'
-import logoImg from './assets/logo.jpg'
-import foodFlyerImg from './assets/food-flyer.jpg'
+import logoImg         from './assets/logo.jpg'
+import foodFlyerImg    from './assets/food-flyer.jpg'
 import restaurantFlyerImg from './assets/restaurant-flyer.jpg'
-import scentsFlyerImg from './assets/scents-flyer.jpg'
+import scentsFlyerImg  from './assets/scents-flyer.jpg'
+import bizCard1Img     from './assets/biz-card-1.jpg'
+import bizCard2Img     from './assets/biz-card-2.jpg'
+import invite1Img      from './assets/invite-1.jpg'
+import invite2Img      from './assets/invite-2.jpg'
+import branding1Img    from './assets/branding-1.jpg'
+import branding2Img    from './assets/branding-2.jpg'
+import letterhead1Img  from './assets/letterhead-1.jpg'
+import letterhead2Img  from './assets/letterhead-2.jpg'
+import banner1Img      from './assets/banner-1.jpg'
+import banner2Img      from './assets/banner-2.jpg'
+import banner3Img      from './assets/banner-3.jpg'
 import './index.css'
 
 const PORTFOLIO_ITEMS = [
   { id: 1,  category: 'flyers',      title: 'Food & Confectionary Flyer', desc: 'Vibrant food flyer for Amy\'s bite Cake & Confectionary showcasing their services, cakes, and contact details.', image: foodFlyerImg },
   { id: 2,  category: 'flyers',      title: 'Restaurant Food Service Flyer', desc: 'Bold restaurant flyer promoting delicious food service with pricing, free delivery offer, and contact details.', image: restaurantFlyerImg },
   { id: 3,  category: 'flyers',      title: 'Jessy Scents Promo Flyer',      desc: 'Elegant product flyer for Jessy Scents & More showcasing premium perfumes, home decor, and fashion pieces.',  image: scentsFlyerImg },
-  { id: 4,  category: 'cards',       title: 'Executive Business Card',   desc: 'Sleek minimalist card with gold foil accents for a premium corporate first impression.',             gradient: 'linear-gradient(135deg,#2d2d2d 0%,#D4AF37 100%)' },
-  { id: 5,  category: 'cards',       title: 'Creative Studio Card',      desc: 'Bold business card for a photography studio with gradient overlay and clean type hierarchy.',        gradient: 'linear-gradient(135deg,#1a1a2e 0%,#f5a623 100%)' },
-  { id: 6,  category: 'invitations', title: 'Luxury Wedding Invitation', desc: 'Elegant wedding invite with floral motifs, gold lettering, and premium textured feel.',             gradient: 'linear-gradient(135deg,#f8e1e7 0%,#d4a5c9 100%)' },
-  { id: 7,  category: 'invitations', title: 'Birthday Celebration',      desc: 'Vibrant birthday invitation with confetti graphics and a joyful festive colour palette.',           gradient: 'linear-gradient(135deg,#fce38a 0%,#f38181 100%)' },
-  { id: 8,  category: 'branding',    title: 'Corporate Brand Identity',  desc: 'Full brand identity package — logo, colour palette, typography guide, and usage mockups.',          gradient: 'linear-gradient(135deg,#0f3460 0%,#16213e 100%)' },
-  { id: 9,  category: 'branding',    title: 'Startup Brand Design',      desc: 'Modern identity for a tech startup with dynamic logo, icon set, and brand guidelines.',             gradient: 'linear-gradient(135deg,#e94560 0%,#533483 100%)' },
-  { id: 10, category: 'letterhead',  title: 'Corporate Letterhead',      desc: 'Professional letterhead with polished header, footer, and clean official document formatting.',     gradient: 'linear-gradient(135deg,#f0f0f0 0%,#c8c8c8 100%)' },
-  { id: 11, category: 'letterhead',  title: 'Executive Letterhead',      desc: 'Premium letterhead with embossed logo placement, gold accent lines, and formal executive layout.',  gradient: 'linear-gradient(135deg,#1a1a2e 0%,#D4AF37 100%)' },
-  { id: 12, category: 'banners',     title: 'Social Media Banner',       desc: 'Scroll-stopping Facebook & Instagram banner with trend-driven aesthetics and clear messaging.',     gradient: 'linear-gradient(135deg,#4158d0 0%,#c850c0 100%)' },
-  { id: 13, category: 'banners',     title: 'Pull-Up Event Banner',      desc: 'Large-format pull-up banner for trade shows with high-impact visuals and bold typography.',         gradient: 'linear-gradient(135deg,#0f9b58 0%,#00bf8f 100%)' },
-  { id: 14, category: 'banners',     title: 'Digital Billboard',         desc: 'Wide-format digital billboard for outdoor advertising with strong CTA and striking imagery.',       gradient: 'linear-gradient(135deg,#f5a623 0%,#e94560 100%)' },
+  { id: 4,  category: 'cards',       title: 'Executive Business Card',    desc: 'Sleek minimalist business card with clean layout and premium finish for a lasting corporate impression.',  image: bizCard1Img    },
+  { id: 5,  category: 'cards',       title: 'Creative Studio Card',       desc: 'Bold and stylish business card design for a creative agency with elegant typography and layout.',          image: bizCard2Img    },
+  { id: 6,  category: 'invitations', title: 'Luxury Wedding Invitation',  desc: 'Elegant wedding invitation with floral elements, gold lettering, and a premium layered presentation.',     image: invite1Img     },
+  { id: 7,  category: 'invitations', title: 'Birthday Celebration Invite',desc: 'Vibrant birthday invitation with a festive colour palette, bold type, and celebratory feel.',             image: invite2Img     },
+  { id: 8,  category: 'branding',    title: 'Corporate Brand Identity',   desc: 'Full brand identity package — logo, colour palette, typography guide, and real-world usage mockups.',     image: branding1Img   },
+  { id: 9,  category: 'branding',    title: 'Startup Brand Design',       desc: 'Modern brand identity for a tech startup with dynamic logo, icon set, and comprehensive brand guide.',    image: branding2Img   },
+  { id: 10, category: 'letterhead',  title: 'Corporate Letterhead',       desc: 'Professional letterhead design with polished header, footer details, and clean document formatting.',      image: letterhead1Img },
+  { id: 11, category: 'letterhead',  title: 'Executive Letterhead',       desc: 'Premium executive letterhead with logo placement, gold accent lines, and a refined formal layout.',       image: letterhead2Img },
+  { id: 12, category: 'banners',     title: 'Social Media Banner',        desc: 'Scroll-stopping social media banner designed for Facebook and Instagram with bold, on-brand visuals.',    image: banner1Img     },
+  { id: 13, category: 'banners',     title: 'Pull-Up Event Banner',       desc: 'Large-format pull-up banner for trade shows and exhibitions with high-impact imagery and messaging.',     image: banner2Img     },
+  { id: 14, category: 'banners',     title: 'Digital Billboard',          desc: 'Wide-format digital billboard design for outdoor advertising with striking imagery and a strong CTA.',    image: banner3Img     },
 ]
 
 const CATEGORIES = [
