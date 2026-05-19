@@ -156,11 +156,11 @@ export default function App() {
               <div key={item.id} className="portfolio-card">
                 <div
                   className="portfolio-img"
-                  style={item.image
-                    ? { backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center top' }
-                    : { background: item.gradient }
-                  }
+                  style={item.image ? {} : { background: item.gradient }}
                 >
+                  {item.image && (
+                    <img src={item.image} alt={item.title} className="portfolio-real-img" />
+                  )}
                   <span className="portfolio-cat">
                     {CATEGORIES.find(c => c.key === item.category)?.label}
                   </span>
