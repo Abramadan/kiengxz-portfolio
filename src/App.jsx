@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import logoImg from './assets/logo.jpg'
 import foodFlyerImg from './assets/food-flyer.jpg'
+import restaurantFlyerImg from './assets/restaurant-flyer.jpg'
+import scentsFlyerImg from './assets/scents-flyer.jpg'
 import './index.css'
 
 const PORTFOLIO_ITEMS = [
   { id: 1,  category: 'flyers',      title: 'Food & Confectionary Flyer', desc: 'Vibrant food flyer for Amy\'s bite Cake & Confectionary showcasing their services, cakes, and contact details.', image: foodFlyerImg },
-  { id: 2,  category: 'flyers',      title: 'Product Launch Flyer',      desc: 'Clean product launch flyer with minimalist layout and strong brand presence.',                       gradient: 'linear-gradient(135deg,#0f3460 0%,#533483 100%)' },
-  { id: 3,  category: 'flyers',      title: 'Business Promo Flyer',      desc: 'Professional promotional flyer with compelling call-to-action and elegant composition.',              gradient: 'linear-gradient(135deg,#e94560 0%,#0f3460 100%)' },
+  { id: 2,  category: 'flyers',      title: 'Restaurant Food Service Flyer', desc: 'Bold restaurant flyer promoting delicious food service with pricing, free delivery offer, and contact details.', image: restaurantFlyerImg },
+  { id: 3,  category: 'flyers',      title: 'Jessy Scents Promo Flyer',      desc: 'Elegant product flyer for Jessy Scents & More showcasing premium perfumes, home decor, and fashion pieces.',  image: scentsFlyerImg },
   { id: 4,  category: 'cards',       title: 'Executive Business Card',   desc: 'Sleek minimalist card with gold foil accents for a premium corporate first impression.',             gradient: 'linear-gradient(135deg,#2d2d2d 0%,#D4AF37 100%)' },
   { id: 5,  category: 'cards',       title: 'Creative Studio Card',      desc: 'Bold business card for a photography studio with gradient overlay and clean type hierarchy.',        gradient: 'linear-gradient(135deg,#1a1a2e 0%,#f5a623 100%)' },
   { id: 6,  category: 'invitations', title: 'Luxury Wedding Invitation', desc: 'Elegant wedding invite with floral motifs, gold lettering, and premium textured feel.',             gradient: 'linear-gradient(135deg,#f8e1e7 0%,#d4a5c9 100%)' },
