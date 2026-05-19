@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import logoImg from './assets/logo.jpg'
+import foodFlyerImg from './assets/food-flyer.jpg'
 import './index.css'
 
 const PORTFOLIO_ITEMS = [
-  { id: 1,  category: 'flyers',      title: 'Event Promo Flyer',         desc: 'Eye-catching flyer for a live music event with bold typography and vibrant colour contrast.',          gradient: 'linear-gradient(135deg,#1a1a2e 0%,#e94560 100%)' },
+  { id: 1,  category: 'flyers',      title: 'Food & Confectionary Flyer', desc: 'Vibrant food flyer for Amy\'s bite Cake & Confectionary showcasing their services, cakes, and contact details.', image: foodFlyerImg },
   { id: 2,  category: 'flyers',      title: 'Product Launch Flyer',      desc: 'Clean product launch flyer with minimalist layout and strong brand presence.',                       gradient: 'linear-gradient(135deg,#0f3460 0%,#533483 100%)' },
   { id: 3,  category: 'flyers',      title: 'Business Promo Flyer',      desc: 'Professional promotional flyer with compelling call-to-action and elegant composition.',              gradient: 'linear-gradient(135deg,#e94560 0%,#0f3460 100%)' },
   { id: 4,  category: 'cards',       title: 'Executive Business Card',   desc: 'Sleek minimalist card with gold foil accents for a premium corporate first impression.',             gradient: 'linear-gradient(135deg,#2d2d2d 0%,#D4AF37 100%)' },
@@ -153,7 +154,13 @@ export default function App() {
           <div className="portfolio-grid">
             {filtered.map(item => (
               <div key={item.id} className="portfolio-card">
-                <div className="portfolio-img" style={{ background: item.gradient }}>
+                <div
+                  className="portfolio-img"
+                  style={item.image
+                    ? { backgroundImage: `url(${item.image})`, backgroundSize: 'cover', backgroundPosition: 'center top' }
+                    : { background: item.gradient }
+                  }
+                >
                   <span className="portfolio-cat">
                     {CATEGORIES.find(c => c.key === item.category)?.label}
                   </span>
